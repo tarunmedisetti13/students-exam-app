@@ -1,57 +1,131 @@
-**Project Setup Instructions**
+# Students Exam App
 
-**Clone the Project **
+A full-stack web application for managing student exams with user authentication, exam creation, and question management.
+
+## 🚀 Project Setup Instructions
+
+### 📥 Clone the Project
+```bash
 git clone https://github.com/tarunmedisetti13/students-exam-app.git
-**Backend (Node.js + Express + MongoDB)**
-1. Navigate to the backend folder:
+cd students-exam-app
+```
+
+## 🔧 Backend Setup (Node.js + Express + MongoDB)
+
+### 1. Navigate to Backend
+```bash
 cd backend
-2. Install dependencies:
+```
+
+### 2. Install Dependencies
+```bash
 npm install
-3.Set up environment variables
-Create a .env file in the backend root:
+```
+
+### 3. Environment Configuration
+Create a `.env` file in the backend root directory:
+
+```env
 MONGO_URI=<your-mongodb-connection-string>
 JWT_SECRET=<your-secret-key>
 PORT=5000
-4. Start the backend server:
+```
+
+### 4. Start Backend Server
+```bash
 npm run server
+```
 
+## ⚛️ Frontend Setup (React + Vite + TailwindCSS)
 
-**Now Frontend (React + Vite + TailwindCSS)**
-1. Navigate to the frontend folder:
+### 1. Navigate to Frontend
+```bash
 cd frontend
-2. Install dependencies:
+```
+
+### 2. Install Dependencies
+```bash
 npm install
-3. Start the development server:
+```
+
+### 3. Start Development Server
+```bash
 npm run dev
+```
 
-**API Testing using Postman**
-For Creating User:
-POST: http:localhost://3000/api/user/create-user
- Sample data: {"name:"Tarun","email":"tarun@gmail.com","password":"123456"}
+## 📚 API Documentation
 
-For login user
-POST: http:localhost://3000/api/user/login-user
- Sample data: {"email":"tarun@gmail.com","password":"123456"}
+### 👤 User Management
 
-For Getting the score:
-POST: http:localhost:3000/api/user/getscore
-Sample data: {"email":"tarun@gmail.com"}
+#### Create User
+- **Endpoint:** `POST http://localhost:5000/api/user/create-user`
+- **Sample Data:**
+```json
+{
+  "name": "Tarun",
+  "email": "tarun@gmail.com",
+  "password": "123456"
+}
+```
 
-For Updating the score:
-POST: http:localhost:3000/api/user/update-score
-Sample data: {"email":"tarun@gmail.com","score":10}
+#### User Login
+- **Endpoint:** `POST http://localhost:5000/api/user/login-user`
+- **Sample Data:**
+```json
+{
+  "email": "tarun@gmail.com",
+  "password": "123456"
+}
+```
 
-For Creating Exam:
-POST: http:localhost:3000/api/exam/create-exam
-Sample data: {"title":"Frontend","subject":"React.js","description":"sample desc"}
+#### Get User Score
+- **Endpoint:** `POST http://localhost:5000/api/user/getscore`
+- **Sample Data:**
+```json
+{
+  "email": "tarun@gmail.com"
+}
+```
 
-For deleting exam:
-POST: http:localhost:3000/api/exam/delete-exam
-Sample data: {"subject":"React.js"}
+#### Update User Score
+- **Endpoint:** `POST http://localhost:5000/api/user/update-score`
+- **Sample Data:**
+```json
+{
+  "email": "tarun@gmail.com",
+  "score": 10
+}
+```
 
-For Creating Quesions:
-POST: http:localhost:3000/api/quesions/add-question
-Sample data: {
+### 📝 Exam Management
+
+#### Create Exam
+- **Endpoint:** `POST http://localhost:5000/api/exam/create-exam`
+- **Sample Data:**
+```json
+{
+  "title": "Frontend",
+  "subject": "React.js",
+  "description": "sample desc"
+}
+```
+
+#### Delete Exam
+- **Endpoint:** `POST http://localhost:5000/api/exam/delete-exam`
+- **Sample Data:**
+```json
+{
+  "subject": "React.js"
+}
+```
+
+### ❓ Question Management
+
+#### Add Question
+- **Endpoint:** `POST http://localhost:5000/api/questions/add-question`
+- **Sample Data:**
+```json
+{
   "exam": "64f1a2b3c4d5e6f789012345", 
   "question": "What is the capital of France?",
   "options": [
@@ -62,27 +136,48 @@ Sample data: {
   ],
   "correctOptionIndex": 2
 }
+```
 
-For Deleting Question:
-POST: http:localhost:3000/api/quesions/delete-question
-Sample input data: {
-  "subject":"React.js"
-  "question": "What is the capital of France?",
+#### Delete Question
+- **Endpoint:** `POST http://localhost:5000/api/questions/delete-question`
+- **Sample Data:**
+```json
+{
+  "subject": "React.js",
+  "question": "What is the capital of France?"
 }
-For fetching 10 questions randomly from subject:
-POST: http:localhost:3000/api/quesions/get-questions
-Sample input data:{
-    "examId":"check in database"//your examId 
+```
+
+#### Get Random Questions (10)
+- **Endpoint:** `POST http://localhost:5000/api/questions/get-questions`
+- **Sample Data:**
+```json
+{
+  "examId": "check in database"
 }
-For fecthing exam questions as get 30 questions
-POST: http:localhost:3000/api/quesions/get-exam-questions
-Sample input data:{
-   "choice":"React.js"//your subject
+```
+
+#### Get Exam Questions (30)
+- **Endpoint:** `POST http://localhost:5000/api/questions/get-exam-questions`
+- **Sample Data:**
+```json
+{
+  "choice": "React.js"
 }
+```
 
+## 🛠️ Tech Stack
 
+- **Frontend:** React, Vite, TailwindCSS
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB
+- **Authentication:** JWT
 
+## 📖 Usage
 
+1. Start both backend and frontend servers
+2. Use the provided API endpoints to test functionality with Postman
+3. Access the frontend application through your browser
+4. Create users, exams, and questions as needed
 
-
-
+---

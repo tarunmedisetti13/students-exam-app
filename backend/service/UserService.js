@@ -78,11 +78,17 @@ const Loginuser = async (req, res) => {
 }
 const UpdateScore = async (req, res) => {
     try {
-        const { userId, score } = req.body;
-        if (!userId || score === undefined) {
+        const { userId, score, email } = req.body;
+        if ((!userId && !email) || score === undefined) {
             return res.status(400).json({ message: 'userId and score are required' });
         }
-        const user = await User.findById(userId);
+        let user;
+        if (userId) {
+            user = await User.findById(userId);
+        }
+        else {
+            user = await User.findOne({ email });
+        }
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
         }

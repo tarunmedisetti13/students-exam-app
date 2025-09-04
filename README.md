@@ -158,6 +158,7 @@ npm run dev
 ```
 
 #### Get Exam Questions (30)
+- **Note:** For this request you need to update the subject ID in `getExamQuestions` function in QuestionService. Change the IDs to match your own subjects.
 - **Endpoint:** `POST http://localhost:5000/api/questions/get-exam-questions`
 - **Sample Data:**
 ```json
@@ -181,3 +182,5 @@ npm run dev
 4. Create users, exams, and questions as needed
 
 ---
+
+*Happy coding! 🎓*
